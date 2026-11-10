@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Taller de Límites</title>
+<link rel="stylesheet" href="hand.css">
+<script src="rough.js"></script><script src="hand.js"></script>
+</head><body>
+
+<!-- ======================= PÁGINA 1 ======================= -->
+<div class="page"><svg class="under"></svg><div class="content">
+  <span class="ln h1"><span class="ul2" data-c="b">Taller de Límites</span> <span class="lg k" style="font-weight:500">— Cálculo Diferencial</span></span>
+  <span class="ln sm k" style="margin-left:380px">Fecha: 10 / 11 / 26 &nbsp;&nbsp; Nombre: __________</span>
+
+  <span class="ln h2">1. Exploración numérica y aproximación lateral</span>
+  <span class="ln h3"><span class="lab">a)</span>Aprox. por izquierda y derecha: &nbsp; f(x) = <span class="fr"><span>x<sup>3</sup> − 8</span><span>x − 2</span></span></span>
+
+  <span class="ln sm p ind">Evalúo cada valor en la calculadora (4 decimales). Ej. con x = 1,9 :</span>
+  <div class="side ind">
+    <div class="wrong" data-s="two"><span class="ln">f(1,9) = <span class="fr"><span>6,859 − 8</span><span>1,9 − 2</span></span> = <span class="fr"><span>−1,141</span><span>−0,1</span></span> = −11,41</span></div>
+    <div class="fix">
+      <span class="ln sm r">✗ ojo el signo: <span class="fr"><span>(−)</span><span>(−)</span></span> = (+)</span>
+      <span class="ln g">f(1,9) = <span class="fr"><span>−1,141</span><span>−0,1</span></span> = 11,41 ✓</span>
+    </div>
+  </div>
+
+  <span class="ln md bold ind">Por la izquierda &nbsp;(x → 2<sup>−</sup>)</span>
+  <table class="tb ind"><tr><td>x</td><td>1,9</td><td>1,99</td><td>1,999</td><td>1,9999</td></tr>
+    <tr><td>f(x)</td><td class="b">11,4100</td><td class="b">11,9401</td><td class="b">11,9940</td><td class="b">11,9994</td></tr></table>
+  <span class="ln md bold ind">Por la derecha &nbsp;(x → 2<sup>+</sup>)</span>
+  <table class="tb ind"><tr><td>x</td><td>2,1</td><td>2,01</td><td>2,001</td><td>2,0001</td></tr>
+    <tr><td>f(x)</td><td class="b">12,6100</td><td class="b">12,0601</td><td class="b">12,0060</td><td class="b">12,0006</td></tr></table>
+
+  <span class="ln ind"><span class="lab">I)</span> x → 2<sup>−</sup> : suben 11,41 → 11,94 → 11,994 … ⟹ <span class="box g" data-c="g">lím = 12</span></span>
+  <span class="ln ind"><span class="lab">II)</span> x → 2<sup>+</sup> : bajan 12,61 → 12,06 → 12,006 … ⟹ <span class="box g" data-c="g">lím = 12</span></span>
+  <span class="ln sm p ind2">los dos lados coinciden ⟹ el límite sí existe y vale 12</span>
+
+  <span class="ln ind"><span class="lab">III)</span> ¿Existe f(2)?</span>
+  <div class="side ind2">
+    <div class="wrong" data-s="one"><span class="ln">f(2) = <span class="fr"><span>8 − 8</span><span>2 − 2</span></span> = 0</span></div>
+    <div class="fix">
+      <span class="ln">f(2) = <span class="fr"><span>8 − 8</span><span>2 − 2</span></span> = <span class="fr"><span>0</span><span>0</span></span> &nbsp;<span class="r">⟹ NO está definida</span></span>
+      <span class="ln sm r">(no se puede dividir entre 0 → hay un "hueco")</span>
+    </div>
+  </div>
+  <span class="ln sm ind2">• <b>f(2)</b> = el valor <u>en</u> el punto → <span class="r">no existe</span></span>
+  <span class="ln sm ind2">• <b><span class="lim"><span>lím</span><span class="u">x→2</span></span> f(x)</b> = el valor al que se <u>acerca</u> → <span class="g">12</span> &nbsp;(hueco en el punto (2, 12))</span>
+
+  <span class="ln ind"><span class="lab">IV)</span> Diferencia de cubos:</span>
+  <div class="side ind2">
+    <div class="wrong" data-s="zig"><span class="ln">x<sup>3</sup> − 8 = (x − 2)(x<sup>2</sup> − 2x + 4)</span></div>
+    <div class="fix">
+      <span class="ln sm r">✗ esa es la de la suma de cubos</span>
+      <span class="ln sm b">a<sup>3</sup> − b<sup>3</sup> = (a − b)(a<sup>2</sup> + ab + b<sup>2</sup>)</span>
+    </div>
+  </div>
+  <span class="ln ind2"><span class="lim"><span>lím</span><span class="u">x→2</span></span> <span class="fr"><span><span class="cn">(x − 2)</span>(x<sup>2</sup> + 2x + 4)</span><span><span class="cn">(x − 2)</span></span></span> = <span class="lim"><span>lím</span><span class="u">x→2</span></span> (x<sup>2</sup> + 2x + 4) = 4 + 4 + 4 = <span class="box g" data-c="g">12</span> <span class="g">✓</span></span>
+  <span class="ln xs p ind3">coincide con las tablas</span>
+</div><svg class="over"></svg></div>
+
+<!-- ======================= PÁGINA 2 ======================= -->
+<div class="page"><svg class="under"></svg><div class="content">
+  <span class="ln h3"><span class="lab">b)</span>Indeterminación trigonométrica: &nbsp; g(x) = <span class="fr"><span>1 − cos(x)</span><span>x<sup>2</sup></span></span> &nbsp; <span class="sm r">(calculadora en RAD)</span></span>
+  <div class="side ind">
+    <div class="wrong" data-s="two"><span class="ln">g(0,1) = <span class="fr"><span>1 − cos(0,1)</span><span>0,01</span></span> = 0,000152</span></div>
+    <div class="fix">
+      <span class="ln sm r">✗ estaba en modo DEG → cambiar a RAD</span>
+      <span class="ln g">g(0,1) = <span class="fr"><span>1 − 0,995004</span><span>0,01</span></span> = 0,49958</span>
+    </div>
+  </div>
+  <table class="tb ind" style="font-size:22px"><tr><td>x</td><td>−0,1</td><td>−0,01</td><td>−0,001</td><td>0,001</td><td>0,01</td><td>0,1</td></tr>
+    <tr><td>g(x)</td><td class="b">0,49958</td><td class="b">0,499996</td><td class="b">0,500000</td><td class="b">0,500000</td><td class="b">0,499996</td><td class="b">0,49958</td></tr></table>
+  <span class="ln xs p ind2">g es par: g(−x) = g(x) → por eso la tabla es simétrica</span>
+  <span class="ln ind">∴ &nbsp;<span class="lim"><span>lím</span><span class="u">x→0</span></span> <span class="fr"><span>1 − cos(x)</span><span>x<sup>2</sup></span></span> ≈ <span class="hl"><span class="box g" data-c="g"><span class="fr"><span>1</span><span>2</span></span> = 0,5</span></span></span>
+
+  <span class="ln h2">2. Vecindades y definición (ε, δ)</span>
+  <span class="ln sm p ind">Def: para todo ε > 0 existe δ > 0 tal que &nbsp;0 &lt; |x − a| &lt; δ ⟹ |f(x) − L| &lt; ε</span>
+
+  <span class="ln h3"><span class="lab">a)</span>f(x) = 4x − 3 , &nbsp; <span class="lim"><span>lím</span><span class="u">x→2</span></span> (4x − 3) = 5</span>
+  <span class="ln ind"><span class="lab">I)</span> ε = 0,04 : &nbsp;(y<sub>1</sub>, y<sub>2</sub>) = (5 − 0,04 ; 5 + 0,04) = <span class="box b" data-c="b">(4,96 ; 5,04)</span></span>
+  <span class="ln ind"><span class="lab">II)</span> 4x<sub>1</sub> − 3 = 4,96 ⟹ 4x<sub>1</sub> = 7,96 ⟹ <span class="hl">x<sub>1</sub> = 1,99</span></span>
+  <span class="ln ind2">4x<sub>2</sub> − 3 = 5,04 ⟹ 4x<sub>2</sub> = 8,04 ⟹ <span class="hl">x<sub>2</sub> = 2,01</span></span>
+  <span class="ln ind"><span class="lab">III)</span></span>
+  <div class="side ind2" style="margin-top:-36px;margin-left:96px">
+    <div class="wrong" data-s="one"><span class="ln">δ = ε = 0,04</span></div>
+    <div class="fix">
+      <span class="ln sm r">✗ la pendiente 4 "estira" la distancia</span>
+      <span class="ln">δ = 2 − 1,99 = 0,01 &nbsp;y&nbsp; 2,01 − 2 = 0,01 ⟹ <span class="box g" data-c="g">δ = 0,01</span></span>
+    </div>
+  </div>
+  <span class="ln ind"><span class="lab">IV)</span> Busco δ : &nbsp;|f(x) − L| &lt; ε</span>
+  <span class="ln ind2">|(4x − 3) − 5| = |4x − 8| = 4|x − 2| &lt; ε &nbsp;⇔&nbsp; |x − 2| &lt; <span class="fr"><span>ε</span><span>4</span></span></span>
+  <span class="ln ind2">Tomo <span class="box g" data-c="g">δ = <span class="fr"><span>ε</span><span>4</span></span></span> &nbsp;<span class="sm p">(con ε = 0,04 → δ = 0,01 ✓ igual que en III)</span></span>
+  <span class="ln ind2 b">Demostración: si 0 &lt; |x − 2| &lt; δ ⟹</span>
+  <span class="ln ind3 b">|f(x) − 5| = 4|x − 2| &lt; 4δ = 4 · <span class="fr"><span>ε</span><span>4</span></span> = ε &nbsp;<span class="g">✓ &nbsp;∎</span></span>
+</div><svg class="over"></svg></div>
+
+<!-- ======================= PÁGINA 3 ======================= -->
+<div class="page"><svg class="under"></svg><div class="content">
+  <span class="ln h3"><span class="lab">b)</span>f(x) = x<sup>2</sup> + 1 , &nbsp; <span class="lim"><span>lím</span><span class="u">x→3</span></span> (x<sup>2</sup> + 1) = 10</span>
+  <div style="display:flex;gap:10px">
+  <div style="flex:1">
+  <span class="ln ind"><span class="lab">I)</span> ε = 0,5 : (10 − 0,5 ; 10 + 0,5) = <span class="box b" data-c="b">(9,5 ; 10,5)</span></span>
+  <span class="ln ind"><span class="lab">II)</span> x = <span class="sq">y − 1</span></span>
+  <span class="ln ind2">x<sub>1</sub> = <span class="sq">9,5 − 1</span> = <span class="sq">8,5</span> ≈ <span class="hl">2,9155</span></span>
+  <span class="ln ind2">x<sub>2</sub> = <span class="sq">10,5 − 1</span> = <span class="sq">9,5</span> ≈ <span class="hl">3,0822</span></span>
+  <span class="ln ind"><span class="lab">III)</span> δ<sub>1</sub> = 3 − 2,9155 = 0,0845</span>
+  <span class="ln ind2">δ<sub>2</sub> = 3,0822 − 3 = 0,0822</span>
+  <span class="ln sm p ind2">δ<sub>1</sub> ≠ δ<sub>2</sub> por la curvatura de la parábola</span>
+  </div>
+  <div class="sketch" data-k="P" style="width:250px;height:190px;margin:14px 18px 0 0"></div>
+  </div>
+  <span class="ln ind2">¿Cuál tomo?</span>
+  <div class="side ind2">
+    <div class="wrong" data-s="two">
+      <span class="ln">δ = δ<sub>1</sub> = 0,0845</span>
+    </div>
+    <div class="fix">
+      <span class="ln sm r">✗ si x = 3 + 0,0845 = 3,0845 ⟹ f(x) = 10,514 &gt; 10,5</span>
+      <span class="ln sm r">&nbsp;&nbsp;&nbsp;se sale de la franja por la derecha</span>
+    </div>
+  </div>
+  <span class="ln ind2">δ = mín(δ<sub>1</sub>, δ<sub>2</sub>) = <span class="box g" data-c="g">δ = 0,0822</span></span>
+  <span class="ln sm ind2 wrap" style="width:640px;white-space:normal">Con el δ más pequeño el intervalo (3 − δ, 3 + δ) queda dentro de (x<sub>1</sub>, x<sub>2</sub>) por <b>los dos lados</b>, entonces f(x) ∈ (9,5 ; 10,5) siempre. Si tomo el mayor, en un lado me salgo.</span>
+
+  <span class="ln h3"><span class="lab">c)</span>Demostraciones (ε, δ) — δ óptimo</span>
+  <span class="ln ind"><span class="lab">I)</span> <span class="lim"><span>lím</span><span class="u">x→1</span></span> (5x + 2) = 7</span>
+  <span class="ln ind2">|(5x + 2) − 7| = |5x − 5| = 5|x − 1| &lt; ε ⇔ |x − 1| &lt; <span class="fr"><span>ε</span><span>5</span></span> &nbsp;⟹ <span class="box g" data-c="g">δ = <span class="fr"><span>ε</span><span>5</span></span></span></span>
+  <span class="ln sm b ind2">Si 0 &lt; |x − 1| &lt; δ ⟹ |f(x) − 7| = 5|x − 1| &lt; 5 · <span class="fr"><span>ε</span><span>5</span></span> = ε ✓</span>
+
+  <span class="ln ind"><span class="lab">II)</span> <span class="lim"><span>lím</span><span class="u">x→−3</span></span> (2 − 3x) = 11</span>
+  <span class="ln ind2">|(2 − 3x) − 11| = |−3x − 9|</span>
+  <div class="side ind2">
+    <div class="wrong" data-s="one"><span class="ln">= −3|x + 3|</span></div>
+    <div class="fix">
+      <span class="ln">= |−3| · |x + 3| = 3|x + 3| &lt; ε &nbsp;⟹ <span class="box g" data-c="g">δ = <span class="fr"><span>ε</span><span>3</span></span></span></span>
+      <span class="ln xs r">✗ el valor absoluto nunca da negativo: |−3| = 3</span>
+    </div>
+  </div>
+  <span class="ln sm b ind2">Si 0 &lt; |x + 3| &lt; δ ⟹ |f(x) − 11| = 3|x + 3| &lt; 3 · <span class="fr"><span>ε</span><span>3</span></span> = ε ✓</span>
+</div><svg class="over"></svg></div>
+
+<!-- ======================= PÁGINA 4 ======================= -->
+<div class="page"><svg class="under"></svg><div class="content">
+  <span class="ln ind"><span class="lab">III)</span> <span class="lim"><span>lím</span><span class="u">x→4</span></span> <span class="fr"><span>x</span><span>2</span></span> = 2</span>
+  <span class="ln ind2">| <span class="fr"><span>x</span><span>2</span></span> − 2 | = | <span class="fr"><span>x − 4</span><span>2</span></span> | = <span class="fr"><span>|x − 4|</span><span>2</span></span> &lt; ε ⇔ |x − 4| &lt; 2ε</span>
+  <div class="side ind2">
+    <div class="wrong" data-s="x"><span class="ln">δ = <span class="fr"><span>ε</span><span>2</span></span></span></div>
+    <div class="fix">
+      <span class="ln"><span class="box g" data-c="g">δ = 2ε</span> &nbsp;<span class="xs r">✗ al despejar, el 2 pasa multiplicando</span></span>
+      <span class="ln sm b">Si 0 &lt; |x − 4| &lt; δ ⟹ |f(x) − 2| = <span class="fr"><span>|x − 4|</span><span>2</span></span> &lt; <span class="fr"><span>2ε</span><span>2</span></span> = ε ✓</span>
+    </div>
+  </div>
+
+  <span class="ln ind"><span class="lab">IV)</span> <span class="lim"><span>lím</span><span class="u">x→2</span></span> (x<sup>2</sup> − 1) = 3 &nbsp; (con δ ≤ 1)</span>
+  <span class="ln ind2">|(x<sup>2</sup> − 1) − 3| = |x<sup>2</sup> − 4| = |x − 2| · |x + 2|</span>
+  <div class="side ind2">
+    <div class="wrong" data-s="two"><span class="ln">⟹ |x − 2| &lt; <span class="fr"><span>ε</span><span>|x + 2|</span></span> ⟹ δ = <span class="fr"><span>ε</span><span>|x + 2|</span></span></span></div>
+    <div class="fix">
+      <span class="ln sm r">✗ δ NO puede depender de x !!</span>
+      <span class="ln sm r">→ hay que acotar |x + 2|</span>
+    </div>
+  </div>
+  <span class="ln ind2">Como δ ≤ 1 : &nbsp;|x − 2| &lt; 1 ⟹ 1 &lt; x &lt; 3 ⟹ 3 &lt; x + 2 &lt; 5 ⟹ <span class="hl">|x + 2| &lt; 5</span></span>
+  <span class="ln ind2">⟹ |x<sup>2</sup> − 4| &lt; 5|x − 2| &lt; ε &nbsp;si&nbsp; |x − 2| &lt; <span class="fr"><span>ε</span><span>5</span></span></span>
+  <span class="ln ind2">Necesito las dos cosas ⟹ <span class="box g" data-c="g">δ = mín ( 1 , <span class="fr"><span>ε</span><span>5</span></span> )</span></span>
+  <span class="ln sm b ind2">Si 0 &lt; |x − 2| &lt; δ ⟹ |f(x) − 3| = |x − 2||x + 2| &lt; <span class="fr"><span>ε</span><span>5</span></span> · 5 = ε ✓ ∎</span>
+
+  <span class="ln h2">3. Indeterminaciones <span class="fr"><span>0</span><span>0</span></span> y <span class="fr"><span>∞</span><span>∞</span></span></span>
+
+  <span class="ln"><span class="lab">a)</span> <span class="lim"><span>lím</span><span class="u">x→3</span></span> <span class="fr"><span>x<sup>2</sup> − 9</span><span>x<sup>2</sup> − 5x + 6</span></span> = <span class="fr"><span>0</span><span>0</span></span> &nbsp;</span>
+  <div class="side ind">
+    <div class="wrong" data-s="one"><span class="ln">= 1</span></div>
+    <div class="fix">
+      <span class="ln xs r">✗ 0/0 no es 1, es una indeterminación → factorizo</span>
+      <span class="ln">= <span class="lim"><span>lím</span><span class="u">x→3</span></span> <span class="fr"><span><span class="cn">(x − 3)</span>(x + 3)</span><span>(x − 2)<span class="cn">(x − 3)</span></span></span> = <span class="lim"><span>lím</span><span class="u">x→3</span></span> <span class="fr"><span>x + 3</span><span>x − 2</span></span> = <span class="fr"><span>6</span><span>1</span></span> = <span class="box g" data-c="g">6</span></span>
+    </div>
+  </div>
+
+  <span class="ln"><span class="lab">b)</span> <span class="lim"><span>lím</span><span class="u">x→−1</span></span> <span class="fr"><span>x<sup>3</sup> + 1</span><span>x<sup>2</sup> − 1</span></span> = <span class="fr"><span>0</span><span>0</span></span> &nbsp; <span class="sm p">suma de cubos: a<sup>3</sup> + b<sup>3</sup> = (a + b)(a<sup>2</sup> − ab + b<sup>2</sup>)</span></span>
+  <div class="side ind">
+    <div class="wrong" data-s="zig"><span class="ln">(x + 1)(x<sup>2</sup> + x + 1)</span></div>
+    <div class="fix">
+      <span class="ln">= <span class="lim"><span>lím</span><span class="u">x→−1</span></span> <span class="fr"><span><span class="cn">(x + 1)</span>(x<sup>2</sup> − x + 1)</span><span>(x − 1)<span class="cn">(x + 1)</span></span></span> = <span class="fr"><span>1 + 1 + 1</span><span>−2</span></span> = <span class="box g" data-c="g">−<span class="fr"><span>3</span><span>2</span></span></span></span>
+    </div>
+  </div>
+</div><svg class="over"></svg></div>
+
+<!-- ======================= PÁGINA 5 ======================= -->
+<div class="page"><svg class="under"></svg><div class="content">
+  <span class="ln"><span class="lab">c)</span> <span class="lim"><span>lím</span><span class="u">x→0</span></span> <span class="fr"><span><span class="sq">x + 4</span> − 2</span><span>x</span></span> = <span class="fr"><span>0</span><span>0</span></span></span>
+  <div class="side ind">
+    <div class="wrong" data-s="two"><span class="ln"><span class="sq">x + 4</span> = <span class="sq">x</span> + 2</span></div>
+    <div class="fix">
+      <span class="ln xs r">✗ <span class="sq">a + b</span> ≠ <span class="sq">a</span> + <span class="sq">b</span> → mejor racionalizo (conjugado)</span>
+      <span class="ln"><span class="fr"><span><span class="sq">x + 4</span> − 2</span><span>x</span></span> · <span class="fr"><span><span class="sq">x + 4</span> + 2</span><span><span class="sq">x + 4</span> + 2</span></span> = <span class="fr"><span>x + 4 − 4</span><span>x(<span class="sq">x + 4</span> + 2)</span></span></span>
+      <span class="ln">= <span class="lim"><span>lím</span><span class="u">x→0</span></span> <span class="fr"><span>1</span><span><span class="sq">x + 4</span> + 2</span></span> = <span class="fr"><span>1</span><span>2 + 2</span></span> = <span class="box g" data-c="g"><span class="fr"><span>1</span><span>4</span></span></span></span>
+    </div>
+  </div>
+
+  <span class="ln"><span class="lab">d)</span> <span class="lim"><span>lím</span><span class="u">x→7</span></span> <span class="fr"><span>2 − <span class="sq">x − 3</span></span><span>x<sup>2</sup> − 49</span></span> · <span class="fr"><span>2 + <span class="sq">x − 3</span></span><span>2 + <span class="sq">x − 3</span></span></span> = <span class="fr"><span>4 − (x − 3)</span><span>(x − 7)(x + 7)(2 + <span class="sq">x − 3</span>)</span></span></span>
+  <span class="ln ind">= <span class="fr"><span>7 − x</span><span>(x − 7)(x + 7)(2 + <span class="sq">x − 3</span>)</span></span> &nbsp; y &nbsp; <span class="fr"><span>7 − x</span><span>x − 7</span></span> = </span>
+  <div class="side ind2">
+    <div class="wrong" data-s="one"><span class="ln">1 ⟹ <span class="fr"><span>1</span><span>56</span></span></span></div>
+    <div class="fix">
+      <span class="ln">−1 ⟹ <span class="lim"><span>lím</span><span class="u">x→7</span></span> <span class="fr"><span>−1</span><span>(x + 7)(2 + <span class="sq">x − 3</span>)</span></span> = <span class="fr"><span>−1</span><span>14 · 4</span></span> = <span class="box g" data-c="g">−<span class="fr"><span>1</span><span>56</span></span></span></span>
+      <span class="ln xs r">✗ olvidé el signo: 7 − x = −(x − 7)</span>
+    </div>
+  </div>
+
+  <span class="ln"><span class="lab">e)</span> <span class="lim"><span>lím</span><span class="u">h→0</span></span> <span class="fr"><span><span class="fr"><span>1</span><span>x + h</span></span> − <span class="fr"><span>1</span><span>x</span></span></span><span>h</span></span> &nbsp;</span>
+  <div class="side ind">
+    <div class="wrong" data-s="x"><span class="ln"><span class="fr"><span>1</span><span>x + h</span></span> − <span class="fr"><span>1</span><span>x</span></span> = <span class="fr"><span>1</span><span>h</span></span></span></div>
+    <div class="fix">
+      <span class="ln">= <span class="lim"><span>lím</span><span class="u">h→0</span></span> <span class="fr"><span>x − (x + h)</span><span>x(x + h) · h</span></span> = <span class="lim"><span>lím</span><span class="u">h→0</span></span> <span class="fr"><span>−<span class="cn">h</span></span><span>x(x + h)<span class="cn">h</span></span></span> = <span class="box g" data-c="g">−<span class="fr"><span>1</span><span>x<sup>2</sup></span></span></span></span>
+      <span class="ln xs r">✗ hay que sacar común denominador x(x + h)</span>
+    </div>
+  </div>
+
+  <span class="ln"><span class="lab">f)</span> <span class="lim"><span>lím</span><span class="u">x→1</span></span> <span class="fr"><span>x<sup>4</sup> − 3x<sup>2</sup> + 2</span><span>x<sup>3</sup> − 1</span></span> = <span class="fr"><span>0</span><span>0</span></span> &nbsp; <span class="sm p">(u = x<sup>2</sup> : u<sup>2</sup> − 3u + 2 = (u − 1)(u − 2))</span></span>
+  <span class="ln ind">= <span class="lim"><span>lím</span><span class="u">x→1</span></span> <span class="fr"><span><span class="cn">(x − 1)</span>(x + 1)(x<sup>2</sup> − 2)</span><span><span class="cn">(x − 1)</span>(x<sup>2</sup> + x + 1)</span></span> = <span class="fr"><span>(2)(−1)</span><span>3</span></span> = <span class="box g" data-c="g">−<span class="fr"><span>2</span><span>3</span></span></span></span>
+
+  <span class="ln"><span class="lab">g)</span> <span class="lim"><span>lím</span><span class="u">x→0</span></span> <span class="fr"><span><span class="sq">1 + x</span> − <span class="sq">1 − x</span></span><span>x</span></span> · <span class="fr"><span><span class="sq">1 + x</span> + <span class="sq">1 − x</span></span><span><span class="sq">1 + x</span> + <span class="sq">1 − x</span></span></span> &nbsp;<span class="sm p">(conjugado)</span></span>
+  <div class="side ind">
+    <div class="wrong" data-s="two"><span class="ln">(1 + x) − (1 − x) = 0</span></div>
+    <div class="fix">
+      <span class="ln">= <span class="fr"><span>(1 + x) − (1 − x)</span><span>x(<span class="sq">1 + x</span> + <span class="sq">1 − x</span>)</span></span> = <span class="fr"><span>2<span class="cn">x</span></span><span><span class="cn">x</span>(<span class="sq">1 + x</span> + <span class="sq">1 − x</span>)</span></span></span>
+      <span class="ln">→ <span class="fr"><span>2</span><span>1 + 1</span></span> = <span class="fr"><span>2</span><span>2</span></span> = <span class="box g" data-c="g">1</span></span>
+      <span class="ln xs r">✗ −(1 − x) = −1 + x → queda 2x</span>
+    </div>
+  </div>
+</div><svg class="over"></svg></div>
+
+<!-- ======================= PÁGINA 6 ======================= -->
+<div class="page"><svg class="under"></svg><div class="content">
+  <span class="ln"><span class="lab">h)</span> <span class="lim"><span>lím</span><span class="u">x→∞</span></span> <span class="fr"><span>4x<sup>3</sup> − 2x<sup>2</sup> + 7</span><span>3x<sup>3</sup> + 5x − 1</span></span> = <span class="fr"><span>∞</span><span>∞</span></span></span>
+  <div class="side ind">
+    <div class="wrong" data-s="one"><span class="ln">= 1</span></div>
+    <div class="fix">
+      <span class="ln xs r">✗ ∞/∞ no es 1 → divido todo entre x<sup>3</sup> (mayor potencia)</span>
+      <span class="ln">= <span class="lim"><span>lím</span><span class="u">x→∞</span></span> <span class="fr"><span>4 − <span class="fr"><span>2</span><span>x</span></span> + <span class="fr"><span>7</span><span>x<sup>3</sup></span></span></span><span>3 + <span class="fr"><span>5</span><span>x<sup>2</sup></span></span> − <span class="fr"><span>1</span><span>x<sup>3</sup></span></span></span></span> = <span class="fr"><span>4 − 0 + 0</span><span>3 + 0 − 0</span></span> = <span class="box g" data-c="g"><span class="fr"><span>4</span><span>3</span></span></span></span>
+    </div>
+  </div>
+
+  <span class="ln"><span class="lab">i)</span> <span class="lim"><span>lím</span><span class="u">x→∞</span></span> ( <span class="sq">x<sup>2</sup> + 5x</span> − x ) &nbsp;→ &nbsp;∞ − ∞</span>
+  <div class="side ind">
+    <div class="wrong" data-s="two"><span class="ln">∞ − ∞ = 0</span></div>
+    <div class="fix">
+      <span class="ln">= <span class="lim"><span>lím</span><span class="u">x→∞</span></span> <span class="fr"><span>(x<sup>2</sup> + 5x) − x<sup>2</sup></span><span><span class="sq">x<sup>2</sup> + 5x</span> + x</span></span> = <span class="lim"><span>lím</span><span class="u">x→∞</span></span> <span class="fr"><span>5x</span><span>x<span class="sq">1 + 5/x</span> + x</span></span></span>
+      <span class="ln">= <span class="lim"><span>lím</span><span class="u">x→∞</span></span> <span class="fr"><span>5</span><span><span class="sq">1 + 5/x</span> + 1</span></span> = <span class="fr"><span>5</span><span>1 + 1</span></span> = <span class="box g" data-c="g"><span class="fr"><span>5</span><span>2</span></span></span></span>
+    </div>
+  </div>
+
+  <span class="ln"><span class="lab">j)</span> <span class="lim"><span>lím</span><span class="u">x→−∞</span></span> <span class="fr"><span><span class="sq">9x<sup>2</sup> + 2</span></span><span>2x − 1</span></span> &nbsp; <span class="sm p">ojo: x &lt; 0 ⟹ <span class="sq">x<sup>2</sup></span> = |x| = −x</span></span>
+  <div class="side ind">
+    <div class="wrong" data-s="x">
+      <span class="ln"><span class="fr"><span>x<span class="sq">9 + 2/x<sup>2</sup></span></span><span>x(2 − 1/x)</span></span> → <span class="fr"><span>3</span><span>2</span></span></span>
+    </div>
+    <div class="fix">
+      <span class="ln">= <span class="lim"><span>lím</span><span class="u">x→−∞</span></span> <span class="fr"><span>−<span class="cn">x</span><span class="sq">9 + 2/x<sup>2</sup></span></span><span><span class="cn">x</span>(2 − 1/x)</span></span> = <span class="fr"><span>−<span class="sq">9</span></span><span>2</span></span> = <span class="box g" data-c="g">−<span class="fr"><span>3</span><span>2</span></span></span></span>
+      <span class="ln xs r">✗ <span class="sq">x<sup>2</sup></span> = |x|, y como x → −∞ es −x (cambia el signo)</span>
+    </div>
+  </div>
+
+  <span class="ln h2">4. Límites laterales, asíntotas y continuidad</span>
+  <span class="ln h3"><span class="lab">a)</span>Continuidad por tramos en x = 2</span>
+  <span class="ln ind">g(x) = <span class="brace"><span>ax<sup>2</sup> − 2 &nbsp;&nbsp; si x &lt; 2</span><span>5 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; si x = 2</span><span>bx + 1 &nbsp;&nbsp;&nbsp; si x &gt; 2</span></span></span>
+  <span class="ln ind"><span class="lab">1)</span> g(2) = 5 &nbsp;<span class="g">✓ existe</span></span>
+  <span class="ln ind"><span class="lab">2)</span> <span class="lim"><span>lím</span><span class="u">x→2<sup>−</sup></span></span> (ax<sup>2</sup> − 2) = 4a − 2 &nbsp;&nbsp;&nbsp;&nbsp; <span class="lim"><span>lím</span><span class="u">x→2<sup>+</sup></span></span> (bx + 1) = 2b + 1</span>
+  <span class="ln ind"><span class="lab">3)</span> los dos laterales tienen que ser = g(2) = 5</span>
+  <div class="side ind2">
+    <div class="wrong" data-s="two"><span class="ln">2a − 2 = 5 ⟹ a = <span class="fr"><span>7</span><span>2</span></span></span></div>
+    <div class="fix">
+      <span class="ln">4a − 2 = 5 ⟹ 4a = 7 ⟹ <span class="box g" data-c="g">a = <span class="fr"><span>7</span><span>4</span></span></span> &nbsp;<span class="xs r">✗ x<sup>2</sup> → a·2<sup>2</sup> = 4a</span></span>
+      <span class="ln">2b + 1 = 5 ⟹ 2b = 4 ⟹ <span class="box g" data-c="g">b = 2</span></span>
+    </div>
+  </div>
+  <span class="ln sm b ind2">Comprobación: 4(7/4) − 2 = 5 ✓ &nbsp; 2(2) + 1 = 5 ✓ &nbsp; g(2) = 5 ✓ ⟹ continua en x = 2</span>
+  <span class="ln xs p ind2">(para x ≠ 2 son polinomios → continuos ⟹ g continua en todos los reales)</span>
+</div><svg class="over"></svg></div>
+
+<!-- ======================= PÁGINA 7 ======================= -->
+<div class="page"><svg class="under"></svg><div class="content">
+  <span class="ln h3"><span class="lab">b)</span>Asíntotas de &nbsp;H(x) = <span class="fr"><span>2x<sup>2</sup> − 8</span><span>x<sup>2</sup> − 9</span></span> = <span class="fr"><span>2(x − 2)(x + 2)</span><span>(x − 3)(x + 3)</span></span></span>
+  <div style="display:flex;gap:6px">
+  <div style="flex:1">
+  <span class="ln ind"><span class="lab">I)</span> x<sup>2</sup> − 9 = 0 ⟹ <span class="hl">x = 3 , x = −3</span></span>
+  <span class="ln sm ind2">numerador en ±3: 2(9) − 8 = 10 ≠ 0</span>
+  <span class="ln sm ind2">→ no se cancela ⟹ sí son asíntotas</span>
+  <span class="ln ind2"><span class="lim"><span>lím</span><span class="u">x→3<sup>+</sup></span></span> H = <span class="fr"><span>10</span><span>0<sup>+</sup></span></span> = <span class="b">+∞</span> &nbsp;&nbsp; <span class="lim"><span>lím</span><span class="u">x→3<sup>−</sup></span></span> H = <span class="fr"><span>10</span><span>0<sup>−</sup></span></span> = <span class="b">−∞</span></span>
+  <span class="ln ind2"><span class="lim"><span>lím</span><span class="u">x→−3<sup>+</sup></span></span> H = <span class="fr"><span>10</span><span>0<sup>−</sup></span></span> = <span class="b">−∞</span></span>
+  </div>
+  <div class="sketch" data-k="H" style="width:250px;height:220px;margin:6px 14px 0 0"></div>
+  </div>
+  <div class="side ind2">
+    <div class="wrong" data-s="one"><span class="ln"><span class="lim"><span>lím</span><span class="u">x→−3<sup>−</sup></span></span> H = −∞</span></div>
+    <div class="fix">
+      <span class="ln"><span class="lim"><span>lím</span><span class="u">x→−3<sup>−</sup></span></span> H = <span class="fr"><span>10</span><span>0<sup>+</sup></span></span> = <span class="b">+∞</span></span>
+      <span class="ln xs r">✗ x = −3,1 ⟹ x<sup>2</sup> = 9,61 &gt; 9 ⟹ denominador positivo</span>
+    </div>
+  </div>
+  <span class="ln ind2">∴ Asíntotas verticales: <span class="box g" data-c="g">x = 3 &nbsp; y &nbsp; x = −3</span></span>
+
+  <span class="ln ind"><span class="lab">II)</span> <span class="lim"><span>lím</span><span class="u">x→±∞</span></span> <span class="fr"><span>2x<sup>2</sup> − 8</span><span>x<sup>2</sup> − 9</span></span> = <span class="lim"><span>lím</span><span class="u">x→±∞</span></span> <span class="fr"><span>2 − 8/x<sup>2</sup></span><span>1 − 9/x<sup>2</sup></span></span> = <span class="fr"><span>2</span><span>1</span></span> = 2</span>
+  <span class="ln ind2">igual para +∞ y −∞ (x<sup>2</sup> es par) ⟹ Asíntota horizontal: <span class="box g" data-c="g">y = 2</span></span>
+
+  <span class="ln h2">5. Problemas de aplicación</span>
+  <span class="ln h3"><span class="lab">a)</span>Costo promedio industrial: C(x) = 2500 + 35x + 0,02x<sup>2</sup> &nbsp;<span class="sm p">(miles USD)</span></span>
+  <span class="ln ind"><span class="lab">I)</span> <span class="ov">C</span>(x) = <span class="fr"><span>C(x)</span><span>x</span></span> = <span class="fr"><span>2500 + 35x + 0,02x<sup>2</sup></span><span>x</span></span> &nbsp;⟹ <span class="box g" data-c="g"><span class="ov">C</span>(x) = <span class="fr"><span>2500</span><span>x</span></span> + 35 + 0,02x</span> <span class="sm">, x &gt; 0</span></span>
+  <span class="ln ind"><span class="lab">II)</span> <span class="lim"><span>lím</span><span class="u">x→∞</span></span> ( <span class="fr"><span>2500</span><span>x</span></span> + 35 + 0,02x )</span>
+  <div class="side ind2">
+    <div class="wrong" data-s="two"><span class="ln">= 0 + 35 + 0 = 35</span></div>
+    <div class="fix">
+      <span class="ln xs r">✗ 0,02x<sup>2</sup>/x = 0,02x → crece, no tiende a 0</span>
+      <span class="ln"><span class="fr"><span>2500</span><span>x</span></span> → 0 , &nbsp;35 → 35 , &nbsp;0,02x → ∞ &nbsp;⟹ <span class="box g" data-c="g">lím = +∞</span></span>
+    </div>
+  </div>
+  <div style="display:flex;gap:8px">
+  <div style="flex:1">
+  <span class="ln sm b ind2 bold">Interpretación (rendimientos a escala):</span>
+  <span class="ln sm ind2 wrap" style="white-space:normal">• Al principio el costo fijo 2500 se reparte entre más unidades → el costo medio <b>baja</b> (economías de escala).</span>
+  <span class="ln sm ind2 wrap" style="white-space:normal">• Pero el término 0,02x termina dominando → el costo medio <b>crece sin límite</b> (deseconomías de escala / rendimientos decrecientes).</span>
+  <span class="ln sm ind2 wrap" style="white-space:normal">⟹ producir indefinidamente <span class="hl">NO</span> abarata la unidad.</span>
+  <span class="ln xs p ind2">extra: el mínimo está en x = <span class="sq">2500/0,02</span> ≈ 354 → <span class="ov">C</span> ≈ 49,14</span>
+  </div>
+  <div class="sketch" data-k="C" style="width:220px;height:150px;margin:8px 14px 0 0"></div>
+  </div>
+</div><svg class="over"></svg></div>
+
+<!-- ======================= PÁGINA 8 ======================= -->
+<div class="page"><svg class="under"></svg><div class="content">
+  <span class="ln h3"><span class="lab">b)</span>Curva de aprendizaje: &nbsp;N(t) = <span class="fr"><span>80t<sup>2</sup></span><span>t<sup>2</sup> + 25</span></span></span>
+  <span class="ln ind"><span class="lab">I)</span> t = 5 :</span>
+  <div class="side ind2">
+    <div class="wrong" data-s="zig"><span class="ln">N(5) = <span class="fr"><span>80 · 25</span><span>25</span></span> + 25 = 105</span></div>
+    <div class="fix">
+      <span class="ln">N(5) = <span class="fr"><span>80 · 25</span><span>25 + 25</span></span> = <span class="fr"><span>2000</span><span>50</span></span> = <span class="box g" data-c="g">40 unidades</span></span>
+      <span class="ln xs r">✗ el denominador completo es t<sup>2</sup> + 25</span>
+    </div>
+  </div>
+  <span class="ln ind"><span class="lab">II)</span> <span class="lim"><span>lím</span><span class="u">t→∞</span></span> <span class="fr"><span>80t<sup>2</sup></span><span>t<sup>2</sup> + 25</span></span> = <span class="lim"><span>lím</span><span class="u">t→∞</span></span> <span class="fr"><span>80</span><span>1 + 25/t<sup>2</sup></span></span> = <span class="fr"><span>80</span><span>1 + 0</span></span> = <span class="box g" data-c="g">80</span></span>
+  <div style="display:flex;gap:8px;margin-top:6px">
+  <div style="flex:1">
+  <span class="ln sm ind2 wrap" style="white-space:normal">• 80 unidades/día es la <span class="hl">capacidad máxima teórica</span> del operario (asíntota horizontal N = 80).</span>
+  <span class="ln sm ind2 wrap" style="white-space:normal">• Con más días de capacitación se acerca a 80, pero nunca la alcanza exactamente (N(t) &lt; 80 siempre).</span>
+  <span class="ln sm ind2 wrap" style="white-space:normal">• En el día 5 ya va en 40 = <b>50 %</b> de su capacidad máxima.</span>
+  </div>
+  <div class="sketch" data-k="N" style="width:250px;height:170px;margin:8px 14px 0 0"></div>
+  </div>
+  <span class="ln lg g" style="margin-top:40px;margin-left:420px;transform:rotate(-4deg)">¡Fin! ✓</span>
+</div><svg class="over"></svg></div>
+
+</body></html>
