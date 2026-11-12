@@ -52,3 +52,7 @@ sub{font-size:.62em;vertical-align:-.25em;line-height:0}
 .rot-l{transform:rotate(-3deg)}.rot-r{transform:rotate(2.5deg)}
 .note{display:inline-block}
 .float{position:absolute}
+
+.x2s{font-size:15px}.huge{font-size:54px}.pts{font-size:17px;color:var(--p);font-weight:500}
+.ex{font-size:31px;font-weight:700;color:var(--b);margin-top:16px}
+.pasos{font-size:21px;font-weight:700;color:var(--o)}

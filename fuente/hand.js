@@ -20,6 +20,8 @@ const G = {
   '✓': [10, 'M1,5.6 C2,6.6 3,7.6 3.9,8.8 C5.6,5.8 7.6,3.2 10,0.6'],
   '✗': [9, 'M1,1.4 C3.6,4 5.6,6.4 8,9 M8,1.2 C5.6,3.6 3.4,6.2 1.2,9'],
   '∴': [8, 'M4,2.6 l.1,.1 M1.5,7.6 l.1,.1 M6.5,7.6 l.1,.1'],
+  '∪': [9, 'M1.5,2.2 C1.4,6.8 2.6,8.9 4.6,8.9 C6.6,8.9 7.6,6.8 7.6,2.2'],
+  '∈': [8, 'M7.3,2.4 C3,1.6 1.2,3.5 1.2,5.3 C1.2,7.1 3,8.7 7.3,8.1 M1.4,5.3 L6.6,5.2'],
   '±': [8, 'M1,4.4 L7,4.3 M4,1.4 L4,7.3 M1,8.6 L7,8.5'],
 };
 const GKEYS = Object.keys(G);
@@ -118,6 +120,14 @@ function drawPage(page){
     if (s === 'x') {
       add(rc.line(R.x - 4, R.y + 2, R.r + 4, R.b - 2, o));
       add(rc.line(R.x - 2, R.b - 1, R.r + 3, R.y + 3, o));
+    } else if (s === 'blot') {
+      boxes.forEach(B => {
+        for (let pass = 0; pass < 3; pass++) {
+          const pts = []; let up = pass % 2 === 0; const ym = B.y + B.h*0.55;
+          for (let x = B.x - 3; x < B.r + 4; x += 4 + J(1.5)) { pts.push([x, ym + (up ? -B.h*0.3 : B.h*0.25) + J(3)]); up = !up; }
+          add(rc.curve(pts, pen(col, {strokeWidth:2.2, roughness:0.5})));
+        }
+      });
     } else if (s === 'zig') {
       boxes.forEach(B => {
         const pts = []; const step = 9; let up = true; const ym = B.y + B.h*0.52;
@@ -214,6 +224,15 @@ function drawSketch(el, page, rc, pen, add){
     add(rc.circle(sx(353.6), sy(49.14), 7, pen(g,{strokeWidth:1.6, fill:g, fillStyle:'solid'})));
     txt(sx(353.6) - 20, sy(49.14) + 22, 'mín', g); txt(X + W - 16, Y + H - 20, 'x', k); txt(sx(0) + 6, Y + 12, 'costo medio', k);
     txt(sx(800), sy(64), 'sigue creciendo', r);
+  } else if (kind === 'NL') {
+    const lo = +el.dataset.min, hi = +el.dataset.max;
+    const sx = v => X + 14 + (v - lo) / (hi - lo) * (W - 28); const y = Y + H/2;
+    add(rc.line(X, y, X + W, y, pen(k,{strokeWidth:1.4}))); arrowHead(X + W, y, 0, k);
+    (el.dataset.segs || '').split(';').filter(Boolean).forEach(sg => { const [a, c] = sg.split(',').map(v => v === 'inf' ? hi + (hi-lo)*0.04 : v === '-inf' ? lo - (hi-lo)*0.04 : +v);
+      add(rc.line(sx(a), y - 1, sx(c), y - 1, pen(b,{strokeWidth:4.5, roughness:0.4}))); });
+    (el.dataset.pts || '').split(',').filter(Boolean).forEach(pt => { const [v, t] = pt.split(':'); const open = t !== 'c';
+      add(rc.circle(sx(+v), y, 10, pen(r,{strokeWidth:1.8, fill: open ? '#fdfdfa' : r, fillStyle:'solid'})));
+      txt(sx(+v) - 6, y + 24, v.replace('-', '−'), k, 17); });
   } else if (kind === 'P') {
     // parabola neighbourhood picture for 2b
     const sx = x => X + 22 + (x - 2.86) / 0.3 * (W - 34), sy = y => Y + H - 14 - (y - 9.1) / 1.8 * (H - 24);
