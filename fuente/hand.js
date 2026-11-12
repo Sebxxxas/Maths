@@ -178,6 +178,9 @@ function drawPage(page){
     const ang = Math.atan2(ey - my, ex - mx);
     [0.5, -0.5].forEach(da => add(rc.line(ex, ey, ex - 10*Math.cos(ang + da), ey - 10*Math.sin(ang + da), pen(col, {strokeWidth:1.6}))));
   });
+  // margin bar for 'sustentación' blocks
+  page.querySelectorAll('.sust').forEach(el => { const R = rel(el, page);
+    add(rc.line(R.x - 10, R.y + 2, R.x - 10 + J(2), R.b - 2, pen(getComputedStyle(document.documentElement).getPropertyValue('--p'), {strokeWidth:2.2, roughness:0.5}))); });
   // sketches
   page.querySelectorAll('.sketch').forEach(el => drawSketch(el, page, rc, pen, add));
 }
@@ -249,8 +252,27 @@ function drawSketch(el, page, rc, pen, add){
   }
 }
 
+function paginate(){
+  const flow = document.getElementById('flow'); if (!flow) return;
+  const items = [...flow.children]; flow.remove();
+  const LIMIT = 1123 - 44;
+  const newPage = () => { const pg = document.createElement('div'); pg.className = 'page';
+    pg.innerHTML = '<svg class="under"></svg><div class="content"></div><svg class="over"></svg>'; document.body.appendChild(pg); return pg; };
+  const bottom = pg => { const P = pg.getBoundingClientRect(); let m = 0; pg.querySelector('.content').querySelectorAll('*').forEach(e => { const b = e.getBoundingClientRect().bottom - P.top; if (b > m) m = b; }); return m; };
+  let pg = newPage();
+  for (const it of items) {
+    if (it.classList.contains('pb')) { if (pg.querySelector('.content').children.length) pg = newPage(); continue; }
+    pg.querySelector('.content').appendChild(it);
+    if (bottom(pg) > LIMIT) {
+      const moved = [it]; let prev = it.previousElementSibling;
+      while (prev && prev.classList.contains('kn')) { moved.unshift(prev); prev = prev.previousElementSibling; }
+      pg = newPage(); moved.forEach(m => pg.querySelector('.content').appendChild(m));
+    }
+  }
+}
 window.handify = async function(){
   await document.fonts.ready;
+  paginate();
   document.querySelectorAll('.page').forEach((pg, i) => {
     seed = 1000 + i * 97;
     // line jitter
