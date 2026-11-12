@@ -185,6 +185,12 @@ function drawPage(page){
     const ang = Math.atan2(ey - my, ex - mx);
     [0.5, -0.5].forEach(da => add(rc.line(ex, ey, ex - 10*Math.cos(ang + da), ey - 10*Math.sin(ang + da), pen(col, {strokeWidth:1.6}))));
   });
+  // big X over a whole failed attempt
+  page.querySelectorAll('.bigx').forEach(el => { const R = rel(el, page); const col = inkOf(el);
+    add(rc.line(R.x - 6, R.y + 4, R.r + 6, R.b - 4, pen(col, {strokeWidth:2.4, roughness:1, bowing:2})));
+    add(rc.line(R.r + 4, R.y + 2, R.x - 4, R.b - 2, pen(col, {strokeWidth:2.4, roughness:1, bowing:2})));
+    const pts = []; for (let i = 0; i < 9; i++) pts.push([R.r - 70 + J(30), R.y + 10 + i * (R.h - 20) / 8]);
+    add(rc.curve(pts, pen(col, {strokeWidth:1.6, roughness:0.8}))); });
   // separators (long hand lines)
   page.querySelectorAll('.sep').forEach(el => { const R = rel(el, page);
     add(rc.line(28 + J(6), R.y + R.h/2 + J(2), 760 + J(10), R.y + R.h/2 + J(3), pen(inkOf(el), {strokeWidth:2.6, roughness:0.7, bowing:1.4}))); });
